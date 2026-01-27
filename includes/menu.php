@@ -9,6 +9,7 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
+    // Em produção, seria melhor logar o erro em vez de dar die
     die("Erro na ligação: " . $e->getMessage());
 }
 
@@ -18,52 +19,21 @@ $stmt->execute();
 $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Menu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-        nav {
-            background-color: #222;
-            padding: 10px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-right: 20px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            color: #00c3ff;
-        }
-    </style>
-</head>
-<body>
-
-<nav>
-    <ul>
-        <?php foreach ($menuItens as $item): ?>
-            <li>
-                <a href="<?= htmlspecialchars($item['link_menu']) ?>">
-                    <?= htmlspecialchars($item['nome_menu']) ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</nav>
-
-</body>
-</html>
+<header id="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            Led<span class="gradient-num">1</span>lab
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <?php foreach ($menuItens as $item): ?>
+                    <li>
+                        <a href="<?= htmlspecialchars($item['link_menu']) ?>">
+                            <?= htmlspecialchars($item['nome_menu']) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+    </div>
+</header>

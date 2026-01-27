@@ -11,21 +11,8 @@
 </head>
 <body>
 
-    <header id="navbar">
-        <div class="container nav-flex">
-            <div class="logo">
-                Led<span class="gradient-num">1</span>lab
-            </div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#servicos">Soluções</a></li>
-                    <li><a href="#contato" class="btn-nav">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<?php include '../includes/menu.php'; ?>
+
 
     <section id="inicio" class="hero">
         <div class="container hero-content">
