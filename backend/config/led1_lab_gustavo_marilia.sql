@@ -1,35 +1,11 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jan-2026 às 11:57
+-- Tempo de geração: 27-Jan-2026 às 13:04
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -77,10 +53,10 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`ID_menu`, `nome_menu`, `tipo_menu`, `ordem_menu`, `link_menu`) VALUES
-(1, 'Contactos', 'todos', 1, 'pages/contactos.php'),
-(2, 'Página Inicial', 'todos', 1, 'pages/index.php'),
-(3, 'Componentes', 'todos', 1, 'pages/lab.php'),
-(4, 'Login', 'todos', 1, 'pages/login.php');
+(1, 'Contactos', 'todos', 3, '/LED1_LAB_GUSTAVO_MARILIA/LED1_LAB_Gustavo_Marilia/pages/contactos.php'),
+(2, 'Home', 'todos', 1, '/LED1_LAB_GUSTAVO_MARILIA/LED1_LAB_Gustavo_Marilia/pages/index.php'),
+(3, 'Componentes', 'todos', 2, '/LED1_LAB_GUSTAVO_MARILIA/LED1_LAB_Gustavo_Marilia/pages/lab.php'),
+(4, 'Login', 'todos', 1, '/LED1_LAB_GUSTAVO_MARILIA/LED1_LAB_Gustavo_Marilia/pages/login.php');
 
 -- --------------------------------------------------------
 
