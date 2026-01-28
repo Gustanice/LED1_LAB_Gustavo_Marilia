@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --gradient-logo: linear-gradient(180deg, #FFC107 0%, #3F51B5 100%);
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --primary-gold: #FFC107;
+    --primary-blue: #3F51B5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================================================================
+   MENU (HEADER)
+   ================================================================ */
+header {
+    background: rgba(11, 12, 16, 0.95);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+}
+
+.gradient-num {
+    display: inline-block;
+    background: var(--gradient-logo);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.2rem;
+    margin: 0 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-gold);
+}
+
+.btn-nav {
+    border: 1px solid var(--primary-gold);
+    padding: 8px 20px;
+    border-radius: 20px;
+    color: var(--primary-gold) !important;
+}
+
+/* ================================================================
+   BANNER HERO (CONTACT US)
+   ================================================================ */
+.contact-hero {
+    height: 400px;
+    background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('../img/banner-contact.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.hero-text-center h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.hero-text-center p {
+    color: #66FCF1;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.gradient-text {
+    background: var(--gradient-btn);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ================================================================
+   MAPA E FORMULÁRIO SOBREPOSTO
+   ================================================================ */
+.main-content {
+    padding: 0; /* Mapa colado no banner */
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 700px;
+    overflow: hidden;
+}
+
+.map-background {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(0.5); /* Ajuste conforme a imagem 8ab0dc */
+}
+
+/* O CARD DO FORMULÁRIO (BRANCO) */
+.floating-form-card {
+    position: absolute;
+    top: 50%;
+    left: 10%; /* Posicionado à esquerda conforme a referência */
+    transform: translateY(-50%);
+    width: 500px;
+    background: #ffffff; /* Fundo branco limpo */
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.form-header .sub-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.form-header h2 {
+    color: #1a1a1a;
+    font-size: 1.8rem;
+    margin: 5px 0 30px 0;
+}
+
+/* Inputs Estilo Clean (Linha inferior) */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    outline: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.btn-submit {
+    background-color: #5172f3; /* Azul da referência */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.contact-mini-info {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    clear: both;
+}
+
+.contact-mini-info p {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .floating-form-card {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .map-wrapper {
+        height: auto;
+    }
+    .map-background {
+        height: 350px;
+    }
+    .hero-text-center h1 {
+        font-size: 2.5rem;
+    }
+}
