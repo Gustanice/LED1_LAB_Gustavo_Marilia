@@ -67,6 +67,7 @@ if (isset($_GET['delete'])) {
                     <td><?= htmlspecialchars($admin['Email']) ?></td>
                     <td>
                         <?php if ($admin['ID_admin'] != $_SESSION['ID_admin']): ?>
+                            <a class="btn-editar" href="editar_admin.php?ID_admin=<?= $admin['ID_admin'] ?>">Editar</a>
                             <a href="?delete=<?= $admin['ID_admin'] ?>" onclick="return confirm('Tens a certeza que queres apagar este admin?')">Apagar</a>
                         <?php else: ?>
                             — (tu)

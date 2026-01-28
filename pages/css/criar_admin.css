@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --primary-blue: #3F51B5;
+    --primary-yellow: #FFC107;
+    --success-bg: rgba(76, 175, 80, 0.1);
+    --success-border: #4caf50;
+    --input-bg: #0b0c10;
+    --border-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- Título --- */
+h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* --- Mensagem de Sucesso --- */
+/* Estiliza o <p style="color:green"> para ser um alerta bonito */
+p[style*="color:green"] {
+    background: var(--success-bg);
+    border: 1px solid var(--success-border);
+    color: var(--success-border) !important;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 450px; /* Mesma largura do form */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* --- O Formulário (Cartão) --- */
+form {
+    background: var(--bg-card);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px; /* Largura confortável */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid var(--primary-yellow); /* Toque visual no topo */
+}
+
+/* --- Inputs --- */
+input {
+    width: 100%;
+    padding: 15px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-white);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    
+    /* Substitui os <br> criando margem automática */
+    margin-bottom: 20px; 
+    display: block;
+}
+
+input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+    background: #12141a;
+}
+
+input::placeholder {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- Botão Criar --- */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background: var(--gradient-btn);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(63, 81, 181, 0.3);
+}
+
+/* --- Utilitários --- */
+/* Esconde os <br> do PHP para o CSS controlar o espaçamento */
+br {
+    display: none;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 480px) {
+    form {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
