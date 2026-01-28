@@ -1,0 +1,184 @@
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --primary-blue: #3F51B5;
+    --primary-yellow: #FFC107;
+    --danger: #ff4444; /* Adicionado para o botão de apagar */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    padding: 40px 20px; /* Espaçamento geral para não colar nas bordas */
+}
+
+/* --- Cabeçalho da Página (.topo) --- */
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.topo h1 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* --- Botão Criar --- */
+.btn-criar {
+    background: var(--gradient-btn);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-criar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+    color: white;
+}
+
+/* --- Tabela de Produtos --- */
+table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-collapse: separate; /* Necessário para o border-radius funcionar */
+    border-spacing: 0;
+    background: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden; /* Garante que os cantos arredondados cortem o conteúdo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+thead {
+    background: rgba(11, 12, 16, 0.5);
+}
+
+th {
+    padding: 18px 20px;
+    text-align: left;
+    color: var(--primary-yellow);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+td {
+    padding: 15px 20px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-white);
+    font-size: 0.95rem;
+}
+
+/* Efeito hover na linha da tabela */
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+tbody tr:last-child td {
+    border-bottom: none; /* Remove a borda da última linha */
+}
+
+/* Imagens dentro da tabela */
+td img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Botões de Ação (Editar / Apagar) --- */
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-editar, .btn-apagar {
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+/* Botão Editar - Estilo Azul (conforme o tema) */
+.btn-editar {
+    background-color: transparent;
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.btn-editar:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* Botão Apagar - Estilo Vermelho (para segurança UI) */
+.btn-apagar {
+    background-color: transparent;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.btn-apagar:hover {
+    background-color: var(--danger);
+    color: white;
+}
+
+/* Mensagem de "Nenhum produto" */
+td[colspan="5"] {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .topo {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto; /* Permite scroll horizontal no telemóvel */
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 12px 15px;
+    }
+}
