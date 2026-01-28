@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jan-2026 às 13:04
+-- Tempo de geração: 28-Jan-2026 às 18:12
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.0.30
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,14 @@ CREATE TABLE `admin` (
   `Email` varchar(50) NOT NULL,
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `admin`
+--
+
+INSERT INTO `admin` (`ID_admin`, `Nome`, `Email`, `password`) VALUES
+(1, 'Admin Master', 'admin@led1lab.com', '$2y$10$DRo9ZNj3DoYq2gjGf3Zib.f6lZih8MizCuPCsmZPP5tv03cnL2x4C'),
+(2, 'Gustavo', 'gustavo@led1lab.com', '$2y$10$Ybs7MvGnpGQ6KCDp4YwEFO2.iDXG0BeD.nIuPaERmKOjCfyTeCSHC');
 
 -- --------------------------------------------------------
 
@@ -72,6 +80,14 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`ID_produto`, `nome_produto`, `descricao_produto`, `imagem_produto`) VALUES
+(1, 'teste', 'teste', '697a3610f1799.png'),
+(2, 'teste', 'teste', '697a362eedd38.png');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -101,7 +117,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `menu`
@@ -113,7 +129,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `ID_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
