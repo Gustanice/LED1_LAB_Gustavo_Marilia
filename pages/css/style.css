@@ -253,83 +253,6 @@ header {
     margin-bottom: 20px;
 }
 
-/* --- Contato --- */
-.section-gradient {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #0b0c10 0%, #1a1b25 100%);
-    border-top: 1px solid #222;
-}
-
-.contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 50px;
-    background: #15171e;
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid #333;
-}
-
-.info-list {
-    list-style: none;
-    margin-top: 30px;
-}
-
-.info-list li {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: #888;
-}
-
-.input-group input, 
-.input-group textarea {
-    width: 100%;
-    padding: 15px;
-    background: #0b0c10;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 5px;
-    outline: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-.input-group input:focus, 
-.input-group textarea:focus {
-    border-color: #3F51B5;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 15px;
-    background: var(--gradient-btn);
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-.alerta-sucesso {
-    background: #4caf50;
-    color: white;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    text-align: center;
-}
 
 /* --- Footer --- */
 footer {
@@ -358,8 +281,77 @@ footer {
     color: #FFC107;
 }
 
-/* --- Responsividade (Mobile) --- */
+/* Estilo para a faixa de logótipos no Hero */
+.hero-logos {
+    margin-top: 50px; /* Afasta dos botões */
+    padding: 20px;
+  
+    border-radius: 10px;
+    display: inline-block; /* Ajusta ao tamanho da imagem */
+    max-width: 100%;
+}
+
+.hero-logos img {
+    max-height: 100px; /* Tamanho proporcional */
+    width: auto;
+    display: block;
+    margin: 0 auto;
+}
+/* Container do Carrossel */
+.carousel-container {
+    width: 100%;
+    max-width: 600px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent; /* Garante que não há fundo */
+}
+
+/* Efeito flutuante para as imagens PNG */
+.floating-img {
+    max-width: 90%;
+    max-height: 400px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Customização das Setas (Cores do Logo) */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-gold) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary-blue) !important;
+}
+
+/* Responsividade para telemóveis */
 @media (max-width: 768px) {
+    .hero-logos {
+        margin-top: 30px;
+        padding: 10px;
+    }
+    .hero-logos img {
+        max-height: 40px;
+    }
+
     .hero {
         background-attachment: scroll; /* Melhora a performance no celular */
         height: auto;
