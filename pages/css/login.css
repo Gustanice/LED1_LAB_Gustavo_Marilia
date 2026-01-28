@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --primary-blue: #3F51B5;
+    --primary-yellow: #FFC107;
+    --input-bg: #0b0c10;
+    --error-bg: rgba(255, 68, 68, 0.1);
+    --error-border: #ff4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh; /* Ocupa a altura total do ecrã */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Imagem de fundo subtil ou gradiente para dar profundidade */
+    background-image: linear-gradient(rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.95));
+}
+
+/* --- Título (H2) --- */
+h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* --- Mensagem de Erro --- */
+/* O seletor abaixo estiliza o <p style="color:red"> transformando-o num alerta bonito */
+p[style*="color:red"] {
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    color: var(--error-border) !important; /* Força a cor vermelha bonita */
+    padding: 12px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px; /* Mesma largura do formulário */
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- O Cartão do Formulário --- */
+form {
+    background: var(--bg-card);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* Largura ideal para login */
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); /* Sombra forte para destacar */
+    border-top: 4px solid var(--primary-yellow); /* Detalhe visual no topo */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Inputs --- */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    background: var(--input-bg);
+    border: 1px solid #333;
+    color: var(--text-white);
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 20px; /* Espaço entre inputs */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.2);
+    background: #12141a;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- Botão --- */
+button {
+    width: 100%;
+    padding: 15px;
+    background: var(--gradient-btn);
+    border: none;
+    border-radius: 50px; /* Botão mais arredondado para login */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(63, 81, 181, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* --- Utilitários --- */
+/* Remove os <br> do HTML para usar margins do CSS */
+br {
+    display: none;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 480px) {
+    form {
+        padding: 30px 20px;
+        box-shadow: none; /* Remove sombra em ecrãs muito pequenos */
+        background: transparent; /* Fundo transparente no mobile parece mais clean */
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+}

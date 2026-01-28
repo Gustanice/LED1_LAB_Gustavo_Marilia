@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --primary-blue: #3F51B5;
+    --primary-yellow: #FFC107;
+    --danger: #ff4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Título --- */
+h2 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block; /* Permite ficar na mesma linha visual se quiseres ajustar */
+    margin-right: 20px;
+}
+
+/* --- Botão "Criar Novo Admin" --- */
+/* Selecionamos especificamente o link de criação */
+a[href="criar_admin.php"] {
+    display: inline-block;
+    background: var(--gradient-btn);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 30px; /* Espaço antes da tabela/alertas */
+}
+
+a[href="criar_admin.php"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+    color: white;
+}
+
+/* --- Mensagens de Sucesso / Erro --- */
+p[style*="color: green"], 
+p[style*="color: red"] {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: left;
+}
+
+p[style*="color: green"] {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid #4caf50;
+    color: #4caf50 !important;
+}
+
+p[style*="color: red"] {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid #ff4444;
+    color: #ff4444 !important;
+}
+
+/* --- Tabela --- */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove as bordas duplas do HTML antigo */
+    border-spacing: 0;
+    background: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: none; /* Remove a borda border="1" do HTML */
+}
+
+thead {
+    background: rgba(11, 12, 16, 0.5);
+}
+
+th {
+    padding: 18px 20px;
+    text-align: left;
+    color: var(--primary-yellow);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+td {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-white);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Remove borda da última linha */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efeito hover nas linhas */
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* --- Ações na Tabela --- */
+
+/* Link "Apagar" */
+td a[href*="delete"] {
+    display: inline-block;
+    padding: 6px 15px;
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+td a[href*="delete"]:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* Texto "— (tu)" */
+td:last-child {
+    font-weight: 500;
+}
+
+/* Caso seja "tu", deixa mais subtil */
+td:last-child:not(:has(a)) {
+    color: #666;
+    font-style: italic;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    /* Permite scroll horizontal na tabela em ecrãs pequenos */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    a[href="criar_admin.php"] {
+        display: block; /* Botão largura total no mobile */
+        text-align: center;
+        width: 100%;
+    }
+}

@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --bg-dark: #0b0c10;
+    --bg-card: #1f2833;
+    --text-main: #c5c6c7;
+    --text-white: #ffffff;
+    --primary-yellow: #FFC107;
+    --primary-blue: #3F51B5;
+    --gradient-btn: linear-gradient(90deg, #FFC107, #3F51B5);
+    --danger: #ff4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* --- Container Principal --- */
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* --- Barra Superior (Top Bar) --- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar h1 {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* --- Estilo Específico para o Botão SAIR (Top Bar) --- */
+/* Como a classe é a mesma (.logout), usamos o contexto .top-bar para mudar a cor para vermelho */
+.top-bar .logout {
+    border: 1px solid var(--danger);
+    color: var(--danger);
+    background: transparent;
+    padding: 8px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.top-bar .logout:hover {
+    background: var(--danger);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+}
+
+/* --- Grelha de Cartões (Cards) --- */
+.cards {
+    display: grid;
+    /* Cria colunas automáticas que não ficam menores que 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- Estilo do Cartão Individual --- */
+.card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid transparent; /* Borda invisível para preparar o hover */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Garante que todos têm a mesma altura */
+    min-height: 220px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid var(--primary-yellow); /* Detalhe amarelo ao passar o rato */
+}
+
+.card h3 {
+    color: var(--primary-yellow);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* --- Botões DENTRO dos Cartões (.logout) --- */
+/* Aqui aplicamos o estilo de botão "Ação Principal" */
+.card .logout {
+    display: inline-block;
+    background: var(--gradient-btn);
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: transform 0.2s;
+    width: fit-content; /* O botão ocupa apenas o espaço necessário */
+}
+
+/* Se o cartão não tiver link (como o do Menu), o botão não aparece, 
+   mas o layout mantém-se graças ao flexbox */
+
+.card .logout:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(63, 81, 181, 0.4);
+    color: white;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr; /* Uma coluna no telemóvel */
+    }
+    
+    .card {
+        min-height: auto; /* Altura automática no mobile */
+    }
+    
+    .card .logout {
+        width: 100%; /* Botão largura total no mobile para facilitar o clique */
+    }
+}

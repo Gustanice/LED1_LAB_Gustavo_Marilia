@@ -15,8 +15,7 @@ if (!isset($_SESSION['ID_admin'])) {
     <meta charset="UTF-8">
     <title>Dashboard Admin | LED1 Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../pages/css/admin_dashboard.css">
 </head>
 <body>
 
@@ -42,7 +41,7 @@ if (!isset($_SESSION['ID_admin'])) {
         <div class="card">
             <h3>Utilizadores</h3>
             <p>Gerir contas</p>
-              <a href="criar_admin.php" class="logout">Criar Admin</a>
+              <a href="gerir_admin.php" class="logout">Gerir Contas</a>
         </div>
     </div>
 
