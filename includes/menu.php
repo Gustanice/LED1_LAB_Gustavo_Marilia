@@ -22,7 +22,7 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header id="navbar">
     <div class="container nav-flex">
         <div class="logo">
-            Led<span class="gradient-num">1</span>lab
+            LED<span class="gradient-num">1/2</span>
         </div>
         <nav>
             <ul class="nav-links">
