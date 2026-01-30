@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erro = "Nome e email são obrigatórios.";
     } else {
         if (!empty($password)) {
-            // Atualizar com nova password
+          
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("UPDATE admin SET Nome = ?, email = ?, password = ? WHERE ID_admin = ?");
             $stmt->execute([$nome, $email, $hashed_password, $id_admin]);
         } else {
-            // Atualizar sem alterar password
+         
             $stmt = $pdo->prepare("UPDATE admin SET Nome = ?, email = ? WHERE ID_admin = ?");
             $stmt->execute([$nome, $email, $id_admin]);
         }
@@ -75,6 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <label>Email:</label><br>
     <input type="email" name="Email" value="<?= htmlspecialchars($admin['Email']) ?>" required><br><br>
+    <label>Tipo:</label><br>
+     <select name="tipo" required>
+        <option value="">Selecione o tipo</option>
+        <option value="admin">Admin</option>
+        <option value="utilizador">Utilizador</option>
+    </select><br><br>
 
     <label>Nova Password (opcional):</label><br>
     <input type="password" name="password" placeholder="Deixa em branco para não alterar"><br><br>

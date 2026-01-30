@@ -14,6 +14,8 @@
 
 <?php include '../includes/menu.php'; ?>
 
+
+<main>
 <section id="inicio" class="hero">
     <div class="container hero-content">
         <h4>BEM-VINDO AO FUTURO</h4>
@@ -92,7 +94,6 @@
     </section>
 
 
-  
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
@@ -114,4 +115,8 @@
   });
 </script>
 </body>
+</main>     
+<div>
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>
+  </div>
 </html>

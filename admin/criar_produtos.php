@@ -51,12 +51,14 @@ if (!empty($_FILES['imagem_produto']['name'])) {
     <meta charset="UTF-8">
     <title>Criar Produto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pages/css/criar_admin.css">
 
 </head>
 <body>
 
 <div class="box">
-    <h1>➕ Criar Produto</h1>
+    <h1 align="center">Criar Produto</h1>
+    
 
     <?php if ($msg): ?>
         <p class="msg"><?= $msg ?></p>

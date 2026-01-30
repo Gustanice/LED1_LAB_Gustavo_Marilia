@@ -8,11 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $tipo = $_POST['tipo'];
 
-    $stmt = $pdo->prepare("INSERT INTO admin (nome, email, password) VALUES (?, ?, ?)");
-    $stmt->execute([$nome, $email, $password]);
+    $stmt = $pdo->prepare("INSERT INTO admin (nome, email, password, tipo) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$nome, $email, $password, $tipo]);
 
-    $msg = "Admin criado com sucesso!";
+    $msg = " Utilizador criado com sucesso!";
 }
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
-<h2>Criar Novo Admin</h2>
+<h2>Criar Novo Utilizador</h2>
 
 <?php if ($msg): ?>
 <p style="color:green"><?= $msg ?></p>
@@ -36,8 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="text" name="nome" placeholder="Nome" required><br><br>
     <input type="email" name="email" placeholder="Email" required><br><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit">Criar Admin</button>
+    <select name="tipo" required>
+        <option value="">Selecione o tipo</option>
+        <option value="admin">Admin</option>
+        <option value="utilizador">Utilizador</option>
+    </select><br><br>
+    <button type="submit">Criar Utilizador</button>
 </form>
-
+<a href="gerir_admin.php">← Voltar</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../backend/config/db.php';
+require_once __DIR__ . '/../includes/menu.php';
 
 $erro = "";
 
@@ -34,17 +35,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
 
-<h2>Login Admin</h2>
+
 
 <?php if ($erro): ?>
 <p style="color:red"><?= $erro ?></p>
 <?php endif; ?>
 
+<main class="login-container">
 <form method="POST">
+    <h2 align="center">Login</h2>
     <input type="email" name="email" placeholder="Email" required><br><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
     <button type="submit">Entrar</button>
 </form>
-
+</main>
 </body>
 </html>

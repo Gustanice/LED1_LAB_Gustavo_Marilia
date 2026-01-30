@@ -51,7 +51,9 @@ if (isset($_GET['delete'])) {
             <th>ID</th>
             <th>Nome</th>
             <th>Email</th>
+            <th>Tipo</th>
             <th>Ações</th>
+
         </tr>
     </thead>
     <tbody>
@@ -65,6 +67,8 @@ if (isset($_GET['delete'])) {
                     <td><?= htmlspecialchars($admin['ID_admin']) ?></td>
                     <td><?= htmlspecialchars($admin['Nome']) ?></td>
                     <td><?= htmlspecialchars($admin['Email']) ?></td>
+                    <td><?= htmlspecialchars($admin['tipo']) ?></td>
+
                     <td>
                         <?php if ($admin['ID_admin'] != $_SESSION['ID_admin']): ?>
                             <a class="btn-editar" href="editar_admin.php?ID_admin=<?= $admin['ID_admin'] ?>">Editar</a>
