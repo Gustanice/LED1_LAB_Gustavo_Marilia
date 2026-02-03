@@ -128,7 +128,7 @@ header {
     display: flex;
     align-items: center;
     /* Caminho para sua imagem */
-    background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('../img/banner-arduino.jpg');
+    background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('../img/banner.png');
     
     /* Ajustes para a imagem ficar perfeita */
     background-size: cover;      /* Faz a imagem ocupar todo o espaço */
