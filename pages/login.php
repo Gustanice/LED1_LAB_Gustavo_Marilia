@@ -48,6 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <input type="password" name="password" placeholder="Password" required><br><br>
     <button type="submit">Entrar</button>
 </form>
+<hr>
+
+<a href="microsoft_login.php">
+    <button type="button" style="background:#2F2F2F;color:white;padding:10px;">
+        Entrar com Microsoft
+    </button>
+</a>
+
 </main>
 </body>
 </html>
