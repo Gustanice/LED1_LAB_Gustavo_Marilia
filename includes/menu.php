@@ -10,7 +10,6 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    // Em produção, seria melhor logar o erro em vez de dar die
     die("Erro na ligação: " . $e->getMessage());
 }
 
@@ -23,13 +22,14 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header id="navbar">
     <div class="container nav-flex">
         <div class="logo">
-            LED<span class="gradient-num">1/2</span>
+                <img src="pages/img/logo_.png" alt="Logo LED 1/2" class="nav-logo-img">
         </div>
         <nav>
             <ul class="nav-links">
                 <?php foreach ($menuItens as $item): ?>
                     <li>
-                        <a href="<?= htmlspecialchars($item['link_menu']) ?>">
+                        <a href="<?= htmlspecialchars($item['link_menu']) ?>" 
+                           class="<?= (trim($item['nome_menu']) == 'Requisição') ? 'btn-nav' : '' ?>">
                             <?= htmlspecialchars($item['nome_menu']) ?>
                         </a>
                     </li>
@@ -38,3 +38,4 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </div>
 </header>
+

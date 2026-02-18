@@ -8,8 +8,8 @@ $mensagem_envio = "";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactos - LeD1 Lab</title>
-        <link rel="icon" type="image/png" href="img/logo.png">
+       <title>LED1/2 - Eletrônica e Inovação</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/contactos.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
 </head>
@@ -74,6 +74,6 @@ $mensagem_envio = "";
 
 
     
-
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>

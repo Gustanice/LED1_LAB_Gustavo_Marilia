@@ -128,7 +128,7 @@ header {
     display: flex;
     align-items: center;
     /* Caminho para sua imagem */
-    background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('../img/banner.png');
+    background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('../img/banner.jpg');
     
     /* Ajustes para a imagem ficar perfeita */
     background-size: cover;      /* Faz a imagem ocupar todo o espaço */
@@ -150,12 +150,26 @@ header {
     font-family: 'Poppins', sans-serif;
 }
 
+.hero-content h4 {
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+    margin-bottom: 10px;
+}
 .hero p {
     font-size: 1.2rem;
     max-width: 600px;
     margin-bottom: 30px;
     font-family: 'Poppins', sans-serif;
 }
+    .hero-logos {
+        margin-top: 30px;
+        padding: 10px;
+    }
+
+        .hero-logos img {
+        max-height: 100px;
+    }
+
 
 .buttons {
     display: flex;
@@ -192,143 +206,6 @@ header {
     background: #0f1115;
 }
 
-.split-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
-}
-
-.stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-}
-
-.stat-item h3 {
-    font-size: 2.5rem;
-    color: #FFC107;
-    margin: 0;
-}
-
-.tech-box {
-    width: 100%;
-    height: 300px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(63, 81, 181, 0.1);
-}
-
-.tech-box span {
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #333;
-    font-size: 2rem;
-    text-align: center;
-}
-
-/* --- Serviços --- */
-.grid-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.card {
-    background: var(--bg-card);
-    padding: 40px;
-    border-radius: 10px;
-    transition: 0.3s;
-    border-top: 3px solid transparent;
-    font-family: 'Poppins', sans-serif;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    border-top: 3px solid #FFC107;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-
-/* --- Footer --- */
-footer {
-    background: #111;
-    color: #fff;
-    padding: 30px 0;
-}
-.socials a {
-    color: #666;
-    margin-left: 20px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-.socials a:hover {
-    color: #FFC107;
-}
-
-/* Estilo para a faixa de logótipos no Hero */
-.hero-logos {
-    margin-top: 50px; /* Afasta dos botões */
-    padding: 20px;
-  
-    border-radius: 10px;
-    display: inline-block; /* Ajusta ao tamanho da imagem */
-    max-width: 100%;
-}
-
-.hero-logos img {
-    max-height: 100px; /* Tamanho proporcional */
-    width: auto;
-    display: block;
-    margin: 0 auto;
-}
-/* Container do Carrossel */
-.carousel-container {
-    width: 100%;
-    max-width: 600px;
-    height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.swiper {
-    width: 100%;
-    height: 100%;
-}
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent; /* Garante que não há fundo */
-}
-
-/* Efeito flutuante para as imagens PNG */
-.floating-img {
-    max-width: 90%;
-    max-height: 400px;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
 
 /* Customização das Setas (Cores do Logo) */
 .swiper-button-next, .swiper-button-prev {
@@ -339,8 +216,437 @@ footer {
     background: var(--primary-blue) !important;
 }
 
-/* Responsividade para telemóveis */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gradient-text {
+    background: var(--gradient-btn);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-center { text-align: center; }
+.section-padding { padding: 80px 0; }
+
+/* ================================================================
+   2. BARRA DE PESQUISA (CENTRALIZADA)
+   ================================================================ */
+
+
+.search-box button {
+    background: var(--gradient-btn);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    transform: scale(1.05);
+}
+
+/* ================================================================
+   3. VITRINE DE PRODUTOS (HORIZONTAL)
+   ================================================================ */
+/* ================================================================
+   3. VITRINE DE PRODUTOS (HORIZONTAL FORÇADA)
+   ================================================================ */
+
+/* O container pai continua em column para a pesquisa ficar em cima dos produtos */
+#vitrine-aleatoria {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+
+/* Se por acaso ainda houver uma classe chamada "grid-cards" no HTML, 
+   vamos garantir que ela também não estrague nada */
+.grid-cards {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+   
+}
+
+/* 1. O container que guarda os cards */
+.grid-cards-horizontal {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important; 
+    width: 100% !important;
+    overflow-x: auto !important;
+    padding: 40px 10px !important; /* Espaço para a sombra não cortar */
+    scroll-behavior: smooth;
+    gap: 0 !important; /* Vamos usar margin nos cards para ser mais seguro */
+}
+
+/* 2. O Card individual */
+.component-card {
+    flex: 0 0 300px !important; /* Largura fixa para não esmagar */
+    min-width: 300px !important;
+    margin: 0 15px !important; /* ISTO VAI CRIAR 30PX DE SEPARAÇÃO (15 de cada lado) */
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra base para dar profundidade */
+}
+
+/* 3. Ajuste da barra de pesquisa (da tua imagem image_844abf.png) */
+.search-box input {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-white) !important;
+    padding: 12px 25px !important; /* Aumentei o padding para o texto não colar na borda */
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+.component-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary-gold);
+    box-shadow: var(--shadow-dark);
+}
+
+/* Imagem do Produto */
+.card-img-container {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+.card-img-container img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+/* Texto e Botões do Card */
+.category-tag {
+    color: var(--primary-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.component-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 20px;
+}
+
+.btn-back {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 4px;
+    align-self: center;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    border-color: var(--primary-gold);
+    letter-spacing: 1px;
+}
+/* Container da barra */
+.search-box {
+    background: var(--bg-card) !important; /* Cor igual aos cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+
+/* Remove a cor branca chata que o Chrome mete ao sugerir palavras */
+.search-box input:-webkit-autofill,
+.search-box input:-webkit-autofill:hover, 
+.search-box input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-card) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ================================================================
+   4. SCROLLBAR PERSONALIZADA E RESPONSIVIDADE
+   ================================================================ */
+.grid-cards-horizontal::-webkit-scrollbar {
+    height: 6px;
+}
+
+.grid-cards-horizontal::-webkit-scrollbar-thumb {
+    background: var(--gradient-btn);
+    border-radius: 10px;
+}
+/* ================================================================
+   SECÇÃO SOBRE - TGPSI & LED1/LED2
+   ================================================================ */
+
+/* Contentor Principal da Secção */
+.section-sobre {
+    background-color: var(--bg-dark);
+    padding: 80px 0;
+    position: relative;
+}
+
+/* Layout em duas colunas */
+.sobre-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap; /* Para mobile */
+}
+
+.sobre-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.sobre-visual {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+/* Badge e Títulos */
+.badge-tech {
+    display: inline-block;
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--primary-gold);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border: 1px solid var(--primary-gold);
+}
+
+.sobre-text h2 {
+    font-size: 2.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.lead {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.description {
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Grelha de Estatísticas (Cards) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+    text-align: left;
+}
+
+.stat-card:hover {
+    border-color: var(--primary-gold);
+    transform: translateY(-5px);
+}
+
+.icon-box i {
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 5px 0;
+}
+
+.stat-card p {
+    font-size: 0.8rem;
+    color: var(--text-main);
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   CARROSSEL TGPSI - LOOK PROFISSIONAL
+   ================================================================ */
+
+/* ================================================================
+   CARROSSEL TRANSPARENTE & AUTOMÁTICO
+   ================================================================ */
+
+.mySwiper {
+    width: 100%;
+    height: 450px;
+    background: transparent !important; /* Garante o fundo transparente */
+}
+
+.swiper-slide {
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* Permite que sombras ou efeitos saiam da caixa */
+}
+
+.swiper-slide img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain; /* Não corta a imagem, mantém a forma original */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)); /* Sombra suave nos componentes */
+    transition: transform 0.5s ease;
+}
+
+/* Efeito flutuante na imagem ativa */
+.swiper-slide-active img {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Customização das Setas (Finas e Elegantes) */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-gold) !important;
+    transform: scale(0.7); /* Mais pequenas e discretas */
+}
+
+/* Paginação (Pontinhos) */
+.swiper-pagination-bullet {
+    background: var(--text-main) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary-gold) !important;
+}
+
+/* Overlay de texto simples */
+.slide-overlay {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    color: var(--primary-gold);
+    font-weight: 600;
+    font-size: 1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+.slide-overlay span {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- Botões de Navegação (Setas) Estilizados --- */
+.swiper-button-next, 
+.swiper-button-prev {
+    background: rgba(31, 40, 51, 0.7); /* Cor do teu --bg-card com opacidade */
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    color: var(--primary-gold) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+    background: var(--primary-gold);
+    color: #0b0c10 !important; /* Cor de fundo escura */
+    box-shadow: 0 0 15px var(--primary-gold);
+}
+
+/* --- Paginação (Pontos) --- */
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #fff !important;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    width: 30px; /* Efeito de pílula na ativa */
+    border-radius: 5px;
+    background: var(--primary-gold) !important;
+    opacity: 1;
+}
+
+/* Ajuste para ecrãs pequenos */
 @media (max-width: 768px) {
+    .mySwiper {
+        height: 300px;
+    }
+    
+    .swiper-button-next, 
+    .swiper-button-prev {
+        display: none; /* Esconde setas no mobile para não tapar a imagem */
+    }
+
+    .sobre-text h2 { font-size: 2rem; }
+    .sobre-wrapper { text-align: center; }
+    .stat-card { text-align: center; }
+}
+
+@media (max-width: 992px) {
+    .grid-cards-horizontal {
+        justify-content: flex-start; /* Alinha à esquerda no mobile para o scroll fluir */
+        padding-left: 20px;
+    }
+    
+    .component-card {
+        flex: 0 0 250px; /* Cards ligeiramente menores em ecrãs pequenos */
+    }
     .hero-logos {
         margin-top: 30px;
         padding: 10px;

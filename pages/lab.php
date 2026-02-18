@@ -43,21 +43,16 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratório - Requisitar Componentes | LeD Lab</title>
+        <title>LED1/2 - Eletrônica e Inovação</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
     
     <link rel="stylesheet" href="css/lab.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="background-animado">
-    <div class="wrap-svgs">
-        <?php for($i=0; $i<8; $i++): ?>
-            <svg class="floating-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
-        <?php endfor; ?>
-    </div>
-</div>
 
+  
 <?php include '../includes/menu.php'; ?>
 
 <section class="lab-hero container">
@@ -148,7 +143,7 @@ $result = $conn->query($sql);
             ?>
         </div>
     </main>
-</div>
+</div> 
 
 <?php include '../includes/footer.php'; ?>
 
