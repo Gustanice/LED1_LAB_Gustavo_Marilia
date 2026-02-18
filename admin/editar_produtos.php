@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['ID_admin']) || $_SESSION['tipo'] !== 'admin') {
+    header("Location: ../pages/index.php");
+    exit;
+}
 require_once __DIR__ . '/protect.php';
 require_once __DIR__ . '/../backend/config/db.php';
 

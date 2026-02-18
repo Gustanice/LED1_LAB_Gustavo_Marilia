@@ -1,9 +1,10 @@
 <?php
-// ====== LIGAÇÃO À BASE DE DADOS ======
-$host = "localhost";
-$dbname = "LED1_LAB_Gustavo_Marilia";
-$user = "root";
-$pass = "";
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once __DIR__ . '/../backend/config/db.php';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);

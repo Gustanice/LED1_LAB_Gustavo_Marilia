@@ -6,24 +6,40 @@ require_once __DIR__ . '/../includes/menu.php';
 $erro = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = $_POST['email'] ?? '';
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    $stmt = $pdo->prepare("SELECT * FROM admin WHERE email = ?");
-    $stmt->execute([$email]);
-    $admin = $stmt->fetch();
-
-    if ($admin && password_verify($password, $admin['password'])) {
-        $_SESSION['ID_admin'] = $admin['ID_admin'];
-        $_SESSION['Nome'] = $admin['Nome'];
-    
-
-        header("Location: ../admin/dashboard.php");
-        exit;
+    // 1️⃣ validar domínio
+    if (!preg_match('/@aeaav\.pt$/', $email)) {
+        $erro = "Só é permitido login com email institucional (@aeaav.pt).";
     } else {
-        $erro = "Email ou password inválidos.";
+        // 2️⃣ procurar utilizador
+        $stmt = $pdo->prepare("SELECT * FROM admin WHERE email = ?");
+        $stmt->execute([$email]);
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // 3️⃣ validar password
+        if ($admin && password_verify($password, $admin['password'])) {
+            $_SESSION['ID_admin'] = $admin['ID_admin'];
+            $_SESSION['Nome'] = $admin['nome'];
+            $_SESSION['tipo'] = $admin['tipo'];
+            $_SESSION['primeiro_login'] = $admin['primeiro_login'];
+
+           if ($admin['tipo'] === 'admin') {
+    header("Location: ../admin/dashboard.php");
+    exit;
+} else {
+    header("Location: ../pages/index.php");
+    exit;
+}
+
+        } else {
+            $erro = "Email ou password inválidos.";
+        }
     }
 }
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">

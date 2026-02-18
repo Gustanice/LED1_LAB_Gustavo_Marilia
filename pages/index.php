@@ -12,7 +12,10 @@
 </head>
 <body>
 
-<?php include '../includes/menu.php'; ?>
+<?php 
+require_once __DIR__ . '/../backend/config/db.php';
+include '../includes/menu.php'; 
+?>
 
 
 <main>

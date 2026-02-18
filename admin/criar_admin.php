@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['ID_admin']) || $_SESSION['tipo'] !== 'admin') {
+    header("Location: ../pages/index.php");
+    exit;
+}
 require_once __DIR__ . '/../admin/protect.php';
 require_once __DIR__ . '/../backend/config/db.php';
 
@@ -10,10 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $tipo = $_POST['tipo'];
 
-    $stmt = $pdo->prepare("INSERT INTO admin (nome, email, password, tipo) VALUES (?, ?, ?, ?)");
+if (!preg_match('/@aeaav\.pt$/', $email)) {
+    $msg = "❌ Só é permitido criar utilizadores com email @aeaav.pt";
+} else {
+    $stmt = $pdo->prepare(
+        "INSERT INTO admin (nome, email, password, tipo) VALUES (?, ?, ?, ?)"
+    );
     $stmt->execute([$nome, $email, $password, $tipo]);
 
-    $msg = " Utilizador criado com sucesso!";
+    $msg = "✅ Utilizador criado com sucesso!";
+}
+
 }
 ?>
 <!DOCTYPE html>
