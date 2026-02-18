@@ -2,8 +2,6 @@
 require_once __DIR__ . '/../backend/config/db.php';
 require_once __DIR__ . '/../admin/protect.php';
 
-
-// 🔐 PROTEÇÃO DA DASHBOARD
 if (!isset($_SESSION['ID_admin'])) {
     header("Location: /./pages/login.php");
     exit;
