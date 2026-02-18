@@ -37,7 +37,8 @@ $img_path = "img/" . basename($produto['imagem_produto']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($produto['nome_produto']); ?> | LeD1 Lab</title>
+    <title>LED1/2 - <?php echo htmlspecialchars($produto['nome_produto']); ?></title>
+    <link rel="icon" type="image/png" href="img/logo.png">
     
     <link rel="stylesheet" href="css/lab.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -92,6 +93,6 @@ $img_path = "img/" . basename($produto['imagem_produto']);
             </div>
         </div>
     </div>
-
+<?php include_once __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
