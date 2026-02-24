@@ -4,9 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once __DIR__ . '/../backend/config/db.php';
 
-
-// Buscar menu da base de dados
-
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,7 +11,7 @@ try {
     die("Erro na ligação: " . $e->getMessage());
 }
 
-
+// Buscar itens do menu
 $stmt = $pdo->prepare("SELECT nome_menu, link_menu FROM menu ORDER BY ordem_menu ASC");
 $stmt->execute();
 $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,13 +20,8 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header id="navbar">
     <div class="container nav-flex">
         <div class="logo">
-
-            <img src="pages/img/logo_.png" alt="Logo LED 1/2" class="nav-logo-img">
-        </div>          
-
-        <nav>
-
-            <a href="index.php" style="text-decoration: none;">
+            <a href="index.php" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+           
                 <strong class="footer-logo">LED<span class="gradient-num">1/2</span></strong>
             </a>
         </div>
@@ -37,16 +29,15 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
-            <span class="bar"></span>   
+            <span class="bar"></span> 
         </div>
 
         <nav class="nav-container">
-
             <ul class="nav-links">
-
                 <?php foreach ($menuItens as $item): ?>
                     <li>
-                        <a href="<?= htmlspecialchars($item['link_menu']) ?>">
+                        <a href="<?= htmlspecialchars($item['link_menu']) ?>" 
+                           class="<?= (trim($item['nome_menu']) == 'Requisição') ? 'btn-nav' : '' ?>">
                             <?= htmlspecialchars($item['nome_menu']) ?>
                         </a>
                     </li>
@@ -54,7 +45,7 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php if (isset($_SESSION['ID_admin'])): ?>
                     <li>
-                        <a href="../pages/logout.php" class="btn-nav">
+                        <a href="../pages/logout.php" class="btn-nav" style="border-color: #ff4444; color: #ff4444 !important;">
                             Logout
                         </a>
                     </li>
@@ -65,15 +56,13 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </a>
                     </li>
                 <?php endif; ?>
-
             </ul>
         </nav>
     </div>
 </header>
 
-
 <style>
-    /* --- Header e Navegação Base --- */
+/* --- Header e Navegação Base --- */
 #navbar {
     background: rgba(11, 12, 16, 0.98);
     padding: 15px 0;
@@ -149,7 +138,6 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 .menu-toggle {
     display: none;
     cursor: pointer;
-    /* push the toggle to the right in the flex container */
     margin-left: auto;
 }
 
@@ -162,11 +150,10 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
     background: #fff;
 }
 
-/* --- RESPONSIVIDADE (Direita para Esquerda) --- */
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
-    /* Remove o padding lateral do container para o ícone encostar no canto */
     .nav-flex {
-        padding-right: 5px; 
+        padding-right: 15px; 
     }
 
     .menu-toggle {
@@ -176,26 +163,25 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     .nav-links {
         position: fixed;
-        right: -100%; /* Escondido fora do ecrã à direita */
+        right: -100%;
         top: 0;
         flex-direction: column;
         background: #0b0c10;
-        width: 75%; /* Largura do menu lateral */
+        width: 75%;
         height: 100vh;
         transition: 0.4s ease-in-out;
         padding: 100px 30px; 
         gap: 30px;
-        align-items: flex-end; /* Encosta os links à direita no menu aberto */
+        align-items: flex-end;
         text-align: right;
         border-left: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links.active {
-        right: 0; /* Desliza para dentro do ecrã */
+        right: 0;
     }
 
-    /* Animação do Hamburger para X */
     #mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
     #mobile-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     #mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -203,7 +189,6 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </style>
 
 <script>
-    // Script para abrir/fechar o menu
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-links');
 
@@ -212,10 +197,8 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         menuLinks.classList.toggle('active');
     });
 
-    // Fechar o menu ao clicar num link
     document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click', () => {
         menu.classList.remove('is-active');
         menuLinks.classList.remove('active');
     }));
 </script>
-
