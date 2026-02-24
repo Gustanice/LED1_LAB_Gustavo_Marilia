@@ -6,6 +6,10 @@ if (!isset($_SESSION['ID_admin'])) {
     header("Location: login.php");
     exit;
 }
+if ($_SESSION['tipo'] !== 'utilizador') {
+    header("Location: ../pages/index.php");
+    exit;
+}
 
 $msg = "";
 

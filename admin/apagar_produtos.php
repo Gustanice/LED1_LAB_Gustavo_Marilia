@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['ID_admin']) || $_SESSION['tipo'] !== 'admin') {
+if (!isset($_SESSION['ID_admin']) || $_SESSION['tipo'] !== 'Admin') {
     header("Location: ../pages/index.php");
     exit;
 }

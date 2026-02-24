@@ -39,6 +39,7 @@ if (!isset($_SESSION['ID_admin'])) {
         <div class="card">
             <h3>Menu</h3>
             <p>Editar menu do site</p>
+                      <a href="gerir_menu.php" class="logout">Gerir Menu</a>
         </div>
 
         <div class="card">

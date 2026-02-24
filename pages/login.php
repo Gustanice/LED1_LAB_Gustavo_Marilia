@@ -24,14 +24,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['Nome'] = $admin['nome'];
             $_SESSION['tipo'] = $admin['tipo'];
             $_SESSION['primeiro_login'] = $admin['primeiro_login'];
+if ($admin['tipo'] === 'utilizador' && $admin['primeiro_login'] == 1) {
+    header("Location: ../pages/alterar_password.php");
+    exit;
+}
 
-           if ($admin['tipo'] === 'admin') {
+        if (strtolower($admin['tipo']) === 'admin') {
+
     header("Location: ../admin/dashboard.php");
     exit;
 } else {
     header("Location: ../pages/index.php");
     exit;
 }
+
 
         } else {
             $erro = "Email ou password inválidos.";
@@ -40,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -55,12 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-<?php if ($erro): ?>
-<p style="color:red"><?= $erro ?></p>
-<?php endif; ?>
 
 <main class="login-container">
+  
 <form method="POST">
+      <?php if ($erro): ?>
+<p style="color:red"><?= $erro ?></p>
+<?php endif; ?>
     <h2 align="center">Login</h2>
     <input type="email" name="email" placeholder="Email" required><br><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
