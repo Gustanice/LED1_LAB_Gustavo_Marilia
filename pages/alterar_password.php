@@ -1,13 +1,18 @@
 <?php
 session_start();
 require_once __DIR__ . '/../backend/config/db.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 if (!isset($_SESSION['ID_admin'])) {
     header("Location: login.php");
     exit;
 }
-if ($_SESSION['tipo'] !== 'utilizador') {
+if ($_SESSION['tipo'] !== 'admin') {
     header("Location: ../pages/index.php");
+    
+}else {
+    header("Location: ../admin/dashboard.php");
     exit;
 }
 
@@ -31,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         );
         $stmt->execute([$hash, $_SESSION['ID_admin']]);
 
-        // depois de mudar, segue para o dashboard
-        header("Location: ../admin/dashboard.php");
+      
+        header("Location: ../pages/index.php");
         exit;
     }
 }

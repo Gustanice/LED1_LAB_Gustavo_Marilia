@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . '/../backend/config/db.php';
-require_once __DIR__ . '/../includes/menu.php';
 
 $erro = "";
 
@@ -44,6 +43,11 @@ if ($admin['tipo'] === 'utilizador' && $admin['primeiro_login'] == 1) {
         }
     }
 }
+if ($admin && password_verify($password, $admin['password'])) {
+
+    echo "Login OK - Tipo: " . $admin['tipo'];
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +61,7 @@ if ($admin['tipo'] === 'utilizador' && $admin['primeiro_login'] == 1) {
 
 </head>
 <body>
-
+<?php require_once __DIR__ . '/../includes/menu.php'; ?>
 
 
 
