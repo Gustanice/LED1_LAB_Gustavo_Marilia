@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once __DIR__ . '/../backend/config/db.php';
 
-<<<<<<< HEAD
+
 // Buscar menu da base de dados
-=======
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,7 +14,7 @@ try {
     die("Erro na ligação: " . $e->getMessage());
 }
 
->>>>>>> 117c8df566b2a7ab9b2e6751a519f1f9f18079a9
+
 $stmt = $pdo->prepare("SELECT nome_menu, link_menu FROM menu ORDER BY ordem_menu ASC");
 $stmt->execute();
 $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,12 +23,12 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <header id="navbar">
     <div class="container nav-flex">
         <div class="logo">
-<<<<<<< HEAD
+
             <img src="pages/img/logo_.png" alt="Logo LED 1/2" class="nav-logo-img">
         </div>          
 
         <nav>
-=======
+
             <a href="index.php" style="text-decoration: none;">
                 <strong class="footer-logo">LED<span class="gradient-num">1/2</span></strong>
             </a>
@@ -41,7 +41,7 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <nav class="nav-container">
->>>>>>> 117c8df566b2a7ab9b2e6751a519f1f9f18079a9
+
             <ul class="nav-links">
 
                 <?php foreach ($menuItens as $item): ?>
@@ -70,8 +70,7 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </div>
 </header>
-<<<<<<< HEAD
-=======
+
 
 <style>
     /* --- Header e Navegação Base --- */
@@ -219,4 +218,4 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
         menuLinks.classList.remove('active');
     }));
 </script>
->>>>>>> 117c8df566b2a7ab9b2e6751a519f1f9f18079a9
+
