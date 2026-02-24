@@ -45,8 +45,8 @@ include '../includes/menu.php';
         <p>Explore o centro de prototipagem avançada. Desde redes e programação até sistemas multimédia e eletrónica aplicada.</p>
         
         <div class="buttons">
-            <a href="#requisicao" class="btn-primary">Requisitar Material</a>
-            <a href="#vitrine-aleatoria" class="btn-outline">Ver Inventário</a>
+            <a href="lab.php" class="btn-primary">Requisitar Material</a>
+            
         </div>
 
         <div class="hero-logos">

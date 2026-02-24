@@ -49,7 +49,7 @@ $img_path = "img/" . basename($produto['imagem_produto']);
 
     <div class="container page-detalhes">
         <a href="lab.php" class="btn-back">
-            <i class="fas fa-arrow-left"></i> ← Voltar ao Laboratório
+            <i class="fas fa-arrow-left"></i> Voltar ao Laboratório
         </a>
         
         <div class="detalhes-wrapper">
