@@ -1,15 +1,8 @@
 <?php
-// 1. Configuração da Base de Dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "led1_lab_gustavo_marilia"; 
+session_start();
+require_once __DIR__ . '/../backend/config/db.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+$erro = "";
 
 // 2. Capturar variáveis da URL e limpar para evitar SQL Injection
 $pesquisa = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';

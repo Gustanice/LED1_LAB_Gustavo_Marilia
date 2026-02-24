@@ -39,8 +39,13 @@ if (isset($_GET['delete'])) {
 </head>
 <body>
 
-<h2>Gerir Admins</h2>
-<a href="criar_admin.php">+ Criar Novo Admin</a>
+<div class="top-bar">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="dashboard.php" class="btn-site"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <h1>Gerir Admins</h1>
+    </div>
+    <a href="criar_admin.php" class="btn-manage" style="width: auto; padding: 10px 25px;">+ Criar Novo Admin</a>
+</div>
 
 <?php if (!empty($msg_sucesso)): ?>
     <p style="color: green;"><?= htmlspecialchars($msg_sucesso) ?></p>

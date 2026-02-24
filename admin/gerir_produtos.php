@@ -20,9 +20,12 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-<div class="topo">
-    <h1> Gerir Componentes</h1>
-    <a href="criar_produtos.php" class="btn btn-criar">+ Criar Produto</a>
+<div class="top-bar">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="dashboard.php" class="btn-site"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <h1>Gerir Componentes</h1>
+    </div>
+    <a href="criar_produtos.php" class="btn-manage" style="width: auto; padding: 10px 25px;">+ Criar Produto</a>
 </div>
 
 <table>

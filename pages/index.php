@@ -1,16 +1,10 @@
 
 <?php
-// 1. Configuração da Base de Dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "led1_lab_gustavo_marilia"; 
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+session_start();
+require_once __DIR__ . '/../backend/config/db.php';
 
-if ($conn->connect_error) {
-    die("Falha na ligação: " . $conn->connect_error);
-}
+$erro = "";
 
 // 2. Procurar 4 componentes aleatórios para a vitrine
 $sql_random = "SELECT * FROM produtos ORDER BY RAND() LIMIT 4";

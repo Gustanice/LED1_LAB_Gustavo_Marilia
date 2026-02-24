@@ -32,32 +32,45 @@ $menuItens = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <span class="bar"></span> 
         </div>
 
-        <nav class="nav-container">
-            <ul class="nav-links">
-                <?php foreach ($menuItens as $item): ?>
-                    <li>
-                        <a href="<?= htmlspecialchars($item['link_menu']) ?>" 
-                           class="<?= (trim($item['nome_menu']) == 'Requisição') ? 'btn-nav' : '' ?>">
-                            <?= htmlspecialchars($item['nome_menu']) ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
+       <nav class="nav-container">
+    <ul class="nav-links">
+        <?php foreach ($menuItens as $item): ?>
+            <li>
+                <a href="<?= htmlspecialchars($item['link_menu']) ?>" 
+                   class="<?= (trim($item['nome_menu']) == 'Requisição') ? 'btn-nav' : '' ?>">
+                    <?= htmlspecialchars($item['nome_menu']) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
 
-                <?php if (isset($_SESSION['ID_admin'])): ?>
-                    <li>
-                        <a href="../pages/logout.php" class="btn-nav" style="border-color: #ff4444; color: #ff4444 !important;">
-                            Logout
-                        </a>
-                    </li>
+        <?php if (isset($_SESSION['ID_admin'])): ?>
+            <li>
+                <?php if (strtolower($_SESSION['tipo']) === 'admin'): ?>
+                    <a href="../admin/dashboard.php" style="color: #FFC107;">
+                        <i class="fas fa-user-shield"></i> Painel Admin
+                    </a>
                 <?php else: ?>
-                    <li>
-                        <a href="../pages/login.php" class="btn-nav">
-                            Login
-                        </a>
-                    </li>
+                    <a href="../pages/perfil.php" style="color: #FFC107;">
+                        <i class="fas fa-user"></i> Meus Pedidos
+                    </a>
                 <?php endif; ?>
-            </ul>
-        </nav>
+            </li>
+
+            <li>
+                <a href="../pages/logout.php" class="btn-nav" style="border-color: #ff4444; color: #ff4444 !important;">
+                    Logout
+                </a>
+            </li>
+        <?php else: ?>
+            <li>
+                <a href="../pages/login.php" class="btn-nav">
+                    Login
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
+        
     </div>
 </header>
 

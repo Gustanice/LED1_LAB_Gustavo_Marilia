@@ -35,6 +35,25 @@ h2 {
     display: inline-block; /* Permite ficar na mesma linha visual se quiseres ajustar */
     margin-right: 20px;
 }
+/* Garante que o título e os botões fiquem na mesma linha */
+.top-bar {
+    display: flex;
+    justify-content: space-between; /* Empurra o botão "Criar" para a direita */
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo para os botões de criar (opcional, para diferenciar do "voltar") */
+.btn-manage {
+    background: var(--gradient-btn);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
 /* --- Botão "Criar Novo Admin" --- */
 /* Selecionamos especificamente o link de criação */
