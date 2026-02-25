@@ -63,7 +63,8 @@ $mensagem_envio = "";
                 </form>
 
                 <div class="contact-mini-info">
-                    <p>📍 Av. da Tecnologia, 1000, Marília-SP</p>
+                    <p>📍Rua Américo Martins Pereira
+3850-837 Albergaria-A-Velha</p>
                     <p>📧 contato@led1lab.com.br</p>
                 </div>
             </div>
