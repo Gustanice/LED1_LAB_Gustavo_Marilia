@@ -3,6 +3,10 @@ session_start();
 require_once __DIR__ . '/../backend/config/db.php';
 
 $erro = "";
+if (isset($_SESSION['primeiro_login']) && $_SESSION['primeiro_login'] == 1) {
+    header("Location: alterar_password.php");
+    exit();
+}
 
 // 2. Capturar variáveis da URL e limpar para evitar SQL Injection
 $pesquisa = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';

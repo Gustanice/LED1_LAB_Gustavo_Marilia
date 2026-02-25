@@ -1,28 +1,25 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../backend/config/db.php';
 
 // Proteção: Só entra quem está logado
 if (!isset($_SESSION['ID_admin'])) {
-    header("Location: pages/login.php");
+    header("Location: login.php");
     exit();
 }
 
 $id_user = $_SESSION['ID_admin'];
+$nome_user = $_SESSION['Nome'];
 
 try {
-    // Consulta para buscar as requisições do utilizador logado
-    $sql = "SELECT r.*, p.nome_produto, p.categoria 
-            FROM requisicoes r 
-            JOIN produtos p ON r.id_produto = p.ID_produto 
-            WHERE r.id_admin = :id_user 
-            ORDER BY r.data_requisicao DESC";
-    
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':id_user' => $id_user]);
-    $minhas_requisicoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Contagem de pedidos para as estatísticas
+    $stmt_count = $pdo->prepare("SELECT COUNT(*) FROM requisicoes WHERE id_admin = ?");
+    $stmt_count->execute([$id_user]);
+    $total_pedidos = $stmt_count->fetchColumn();
 } catch (PDOException $e) {
-    $erro = "Erro ao carregar requisições: " . $e->getMessage();
+    $total_pedidos = 0;
 }
 ?>
 
@@ -30,51 +27,67 @@ try {
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Painel - LED 1/2</title>
-    <link rel="stylesheet" href="css/lab.css"> <style>
-        .panel-container { margin-top: 120px; padding: 20px; color: white; }
-        .table-requisicoes { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(255,255,255,0.05); }
-        .table-requisicoes th, .table-requisicoes td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
-        .table-requisicoes th { color: #FFC107; text-transform: uppercase; font-size: 12px; }
-        .status-badge { padding: 5px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; }
-        .status-pendente { background: #ff9800; color: black; }
+    <title>Minha Conta | LED1 Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ajuste específico para garantir que o menu.php não choque com o layout */
+        body { padding-top: 80px; } 
     </style>
 </head>
 <body>
-    <?php include '../includes/menu.php'; ?>
 
-    <div class="container panel-container">
-        <h1>Olá, <?= htmlspecialchars($_SESSION['Nome']) ?>! 👋</h1>
-        <p>Aqui podes consultar o histórico dos teus pedidos ao laboratório.</p>
 
-        <?php if (empty($minhas_requisicoes)): ?>
-            <p style="margin-top:30px; color: #888;">Ainda não realizaste nenhuma requisição.</p>
-        <?php else: ?>
-            <table class="table-requisicoes">
-                <thead>
-                    <tr>
-                        <th>Material</th>
-                        <th>Categoria</th>
-                        <th>Qtd.</th>
-                        <th>Data</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($minhas_requisicoes as $req): ?>
-                    <tr>
-                        <td><strong><?= htmlspecialchars($req['nome_produto']) ?></strong></td>
-                        <td><?= htmlspecialchars($req['categoria']) ?></td>
-                        <td><?= $req['quantidade'] ?></td>
-                        <td><?= date('d/m/Y H:i', strtotime($req['data_requisicao'])) ?></td>
-                        <td><span class="status-badge status-pendente">Entregue / Em uso</span></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
+
+<div class="dashboard">
+    <div class="top-bar">
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="lab.php" class="btn-site"><i class="fas fa-microchip"></i> Voltar ao Lab</a>
+            <h1>Área do Utilizador</h1>
+        </div>
+        <div class="user-info">
+            <span>Olá, <strong><?= htmlspecialchars($nome_user); ?></strong></span>
+            <a href="logout.php" class="logout">Sair</a>
+        </div>
     </div>
 
-    <?php include '../includes/footer.php'; ?>
+    <div class="stats-row">
+        <div class="stat-card">
+            <h3><?= $total_pedidos ?></h3>
+            <p>Materiais Requisitados</p>
+        </div>
+        <div class="stat-card">
+            <h3>Ativo</h3>
+            <p>Estado da Conta</p>
+        </div>
+    </div>
+
+    <div class="cards">
+        
+        <div class="card">
+            <i class="fas fa-box-open"></i>
+            <h3>Meus Pedidos</h3>
+            <p>Consulta a lista de todos os materiais que tens em tua posse ou já devolveste.</p>
+            <a href="minhas_requisicoes.php" class="btn-manage">Ver Histórico</a>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-key"></i>
+            <h3>Segurança</h3>
+            <p>Precisas de mudar a tua senha? Mantém a tua conta segura alterando-a regularmente.</p>
+            <a href="alterar_password.php" class="btn-manage">Alterar Senha</a>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-comment-dots"></i>
+            <h3>Suporte</h3>
+            <p>Tens dúvidas sobre algum material ou problema com a tua requisição?</p>
+            <a href="mailto:admin@aeaav.pt" class="btn-manage">Contactar Admin</a>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>

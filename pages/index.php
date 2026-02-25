@@ -36,7 +36,7 @@ include '../includes/menu.php';
         
         <h1>Inovação Tecnológica em <br><span class="gradient-text">TGPSI</span>.</h1>
         
-        <p>Explore o centro de prototipagem avançada. Desde redes e programação até sistemas multimédia e eletrónica aplicada.</p>
+        <p>Explore o laboratório AEAAV . Desde redes e programação até sistemas multimédia e eletrónica aplicada.</p>
         
         <div class="buttons">
             <a href="lab.php" class="btn-primary">Requisitar Material</a>

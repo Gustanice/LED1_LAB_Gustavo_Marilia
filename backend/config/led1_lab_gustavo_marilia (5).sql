@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Fev-2026 às 13:17
+-- Tempo de geração: 25-Fev-2026 às 10:55
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -41,12 +41,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ID_admin`, `Nome`, `Email`, `password`, `tipo`, `primeiro_login`) VALUES
-(1, 'Admin Master', 'admin@led1lab.com', '$2y$10$DRo9ZNj3DoYq2gjGf3Zib.f6lZih8MizCuPCsmZPP5tv03cnL2x4C', 'Admin Master', 1),
-(2, 'Gustavo', 'gustavo@led1lab.com', '$2y$10$Ybs7MvGnpGQ6KCDp4YwEFO2.iDXG0BeD.nIuPaERmKOjCfyTeCSHC', 'admin', 1),
 (3, 'asdas', 'adaadasda@aeaav.pt', '$2y$10$Q7UUwDbtz2WvpnF7.AfkoOHcz9zx8wUEGB/1ziXq4l7OYrTyBjcLK', 'utilizador', 1),
 (4, 'Gustavo', 'al.919783@aeaav.pt', '$2y$10$AE7DxWudag13ZuwqbzJZ.unrIlf3rJCv3D2a6sqQweprgQy2d3M3a', 'admin', 0),
-(5, 'Marilia', 'marilia@gmail.com', '$2y$10$odEp4xlpBlxWi07GHJJVjeTw06lBWimjJoxxq.YB2qMO0sDH/N6Gy', 'utilizador', 1),
-(6, 'Marilia', 'al.917837@aeaav.pt', '$2y$10$L1gPtBfQvULjQAOJu5rpPeMPsaG528/KMESO83NzfrTVTaqMr7L5m', 'utilizador', 1);
+(6, 'Marilia', 'al.917837@aeaav.pt', '$2y$10$6pE5XoY5B6wFyl8LaNMeJuRp50ULgRC.YQj7g685LbSt9dX2IFeJy', 'utilizador', 0);
 
 -- --------------------------------------------------------
 
@@ -70,7 +67,7 @@ CREATE TABLE `footer` (
 --
 
 INSERT INTO `footer` (`id`, `texto_copyright`, `email`, `telefone`, `morada`, `instagram`, `linkedin`, `github`) VALUES
-(1, '© ', 'contato@led1lab.com', '(11) 99999-9999', 'Av. da Tecnologia, 1000 - Tech Park', 'https://instagram.com/led1lab', 'https://linkedin.com/company/led1lab', 'https://github.com/led1lab');
+(1, '© ', 'contato@led1lab.com', '234 529 680', 'Rua Américo Martins Pereira\n3850-837 Albergaria-A-Velha', 'https://instagram.com/led1lab', 'https://linkedin.com/company/led1lab', 'https://github.com/led1lab');
 
 -- --------------------------------------------------------
 

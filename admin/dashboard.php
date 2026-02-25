@@ -20,6 +20,7 @@ $total_req = $pdo->query("SELECT COUNT(*) FROM requisicoes")->fetchColumn();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    
 <div class="dashboard">
     <div class="top-bar">
         <div style="display: flex; align-items: center; gap: 20px;">
